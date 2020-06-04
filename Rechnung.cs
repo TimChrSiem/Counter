@@ -7,21 +7,17 @@ public class Rechnung : MonoBehaviour
 {
     public GameObject CubeObject;
     private GameObject EmptyGameobject;
+    private GameObject Text;
+    public OtherScript Beleg;
     private int f = 0;
     private GameObject theRechnung;
-    private LKW lkw;
 
 
-    private void Awake()
-    {
-        lkw = GameObject.FindObjectOfType<LKW>();
-    }
     // Update is called once per frame
-    private void Update()
-
+    public  void UpdateBeleg(int Beleg)
     {
-        int waren = lkw.getInhaltCount(); 
-        
+        f = Beleg ;
+        if (f == 1)
         {
             if (theRechnung == null) {
                 theRechnung = Instantiate(CubeObject, transform.position, transform.rotation);
