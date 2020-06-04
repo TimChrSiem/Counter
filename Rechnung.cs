@@ -7,31 +7,38 @@ public class Rechnung : MonoBehaviour
 {
     public GameObject CubeObject;
     private GameObject EmptyGameobject;
-    private int f = 0;
+    private GameObject clone;
     private GameObject theRechnung;
     private LKW lkw;
-
+  
 
     private void Awake()
     {
         lkw = GameObject.FindObjectOfType<LKW>();
+       
     }
     // Update is called once per frame
     private void Update()
 
     {
-        int waren = lkw.getInhaltCount(); 
         
+        int waren = lkw.getInhaltCount(); 
+        if (waren >=5)
         {
-            if (theRechnung == null) {
+            if (theRechnung == null) 
+            {
+
                 theRechnung = Instantiate(CubeObject, transform.position, transform.rotation);
-            } else {
+            } 
+            else 
+            {
                 return;
             }
         }
-        else if  (f==0)
+        else if  (waren < 5)
         {
-            Destroy(CubeObject);
+            clone = GameObject.FindGameObjectWithTag("Rechnung");
+            DestroyImmediate(clone,true);
 
 
         }
